@@ -1,17 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState, useEffect } from 'react';
 import { StyleSheet, Text, Button, View, TextInput } from 'react-native';
 
 export default function App() {
+  const [itemText, setItemText] = useState('');
+  const [items, setItems] = useState([]);
+
+  const onChangeText = (text) => {
+    setItemText(text);
+  }
+
+  const addItem = () => {
+    setItems((oldArry) => [...oldArry, { id: Date.now(), value: itemText }]);
+    setItemText('');
+  }
+
   return (
     <View style={styles.screen}>
       <View style={styles.inputContainer}>
-        <TextInput placeholder='Texto' style={styles.input} />
-        <Button title='agregar'/>
+        <TextInput 
+        placeholder='Texto' 
+        style={styles.input} 
+        onChangeText={onChangeText} 
+        value={itemText} 
+        />
+        <Button title='agregar' onPress={addItem}/>
       </View>
       <View style={styles.itemContainer}>
-        <Text style={styles.item}>Item 1</Text>
-        <Text style={styles.item}>Item 2</Text>
-        <Text style={styles.item}>Item 3</Text>
+        {items.map((item) => {
+          return(
+            <Text key={item.id} style={styles.item}>
+              {item.value}
+            </Text>
+          )
+        })}
       </View>
     </View>
   );
