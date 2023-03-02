@@ -1,7 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState, useEffect } from 'react';
-import { StyleSheet, Text, Button, View, TextInput, FlatList, Pressable, Image } from 'react-native';
-import { ListaItem, AddItem, Modal } from './components';
+import { useState } from 'react';
+import { StyleSheet, View, Image } from 'react-native';
+import { ListaItem } from './components';
+import AddItem from './components';
+import ModalComponent from './components';
 
 export default function App() {
   const [itemText, setItemText] = useState('');
@@ -45,11 +46,14 @@ export default function App() {
 
       <ListaItem items={items} selectItem={selectItem} />
 
-      <Modal 
+      <ModalComponent 
       modalVisible={modalVisible}
+      setModalVisible={setModalVisible}
       selectedItem={selectedItem}
+      setSelectedItem={setSelectedItem}
       removeItem={removeItem}
       />
+
     </View>
   );
 }

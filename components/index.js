@@ -1,9 +1,9 @@
 import AddItem from "./AddItem";
 import ListaItem from "./Lista/ListaItem";
-import Modal from "./Modal";
+import ModalComponent from "./ModalComponent";
 
 export {
     AddItem,
     ListaItem,
-    Modal
+    ModalComponent
 }

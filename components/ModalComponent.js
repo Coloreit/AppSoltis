@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Pressable, Modal } from 'react-native'
 import React from 'react'
 
-const Modal = ({ modalVisible, selectedItem, removeItem }) => {
+const ModalComponent = ({ modalVisible, selectedItem, removeItem, setModalVisible, setSelectedItem }) => {
     return (
     <Modal animationType='slide' transparent={true} visible={modalVisible}>
         <View style={styles.modalContainer}>
